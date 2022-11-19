@@ -6,6 +6,7 @@ window.addEventListener('load',()=>{
   let locationTimezone = document.querySelector('.location-timezone');
   let temperatureSection = document.querySelector('.temperature');
   const temperatureSpan = document.querySelector('.temperature span');
+  let tempIcon = document.querySelector('.icon');
 
   if(navigator.geolocation){
     navigator.geolocation.getCurrentPosition
@@ -36,8 +37,8 @@ const { temp_c, humidity, temp_f } = data.current;
 let Celsius= (temp_f - 32)*(5 / 9);
 
     //Set Icon
-    setIcons('https:'+icon, document.querySelector('.icon'));
-
+   // setIcons('https:'+icon, document.querySelector('.icon'));
+   tempIcon.src=icon;
     //Change temperature to Celsius/Farenheit
     temperatureSection.addEventListener('click', () =>{
         if(temperatureSpan.textContent ==="F"){
@@ -52,7 +53,7 @@ let Celsius= (temp_f - 32)*(5 / 9);
   });
 } 
 
-function setIcons (icon,code){
+function setIcons (icon){
     const skycons = new Skycons({color: "white"});
     const currentIcon = icon;
     console.log(icon);
